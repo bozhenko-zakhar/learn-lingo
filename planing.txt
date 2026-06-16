@@ -1,0 +1,23 @@
+the default page is defined as a Home page
+
+next two routes routes must be defined as:
+	- teachers: firebase rendering
+	- favorites: firebase rendering OR zustand storage
+
+there is a Header component with dynamic navigation items, which change after authorithation:
+	- home, teachers, login/registration
+	- home, teachers, favorites, logout
+
+modal views should be created by createPortal login
+so there is only one ModalView component for every routes
+
+Components:
+	- TeacherCard
+	- FilterBlock
+	- ConfirmLogout: firebase authorithation
+	- Login: firebase authorithation
+	- Registration: firebase authorithation
+	- Unauthorised
+	- UI Kits:
+			- one button component for every place
+			- selectors should not be created anew, but should be used from react-select multiservese
