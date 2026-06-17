@@ -12,12 +12,13 @@ modal views should be created by createPortal login
 so there is only one ModalView component for every routes
 
 Components:
+	- ModalView
 	- TeacherCard
 	- FilterBlock
-	- ConfirmLogout: firebase authorithation
-	- Login: firebase authorithation
-	- Registration: firebase authorithation
-	- Unauthorised
+	- ConfirmLogoutContent: firebase authorithation
+	- LoginForm: firebase authorithation
+	- RegistrationForm: firebase authorithation
+	- UnauthorisedContent
 	- UI Kits:
 			- one button component for every place
 			- selectors should not be created anew, but should be used from react-select multiservese
