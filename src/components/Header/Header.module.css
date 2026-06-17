@@ -1,0 +1,101 @@
+.header {
+	width: 1184px;
+	margin-inline: auto;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.header_navigation {
+	display: flex;
+	align-items: center;
+	gap: 390px;
+}
+
+.favicon_logo {
+	width: 28px;
+	height: 28px;
+	margin-right: 8px;
+}
+
+.favicon_link {
+	display: inline-flex;
+	align-items: center;
+
+	font-family: var(--font-family), sans-serif;
+	font-weight: 500;
+	font-size: 20px;
+	line-height: 1.2;
+	letter-spacing: -0.02em;
+	text-decoration-line: none;
+
+	color: #121417;
+}
+
+.nav_list {
+	display: flex;
+	gap: 28px;
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+.nav_item > a {
+	font-family: var(--font-family), sans-serif;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 1.25;
+	text-decoration-line: none;
+
+	color: #121417;
+}
+
+.auth_actions {
+	display: flex;
+	gap: 16px;
+}
+
+.login_button {
+	display: inline-flex;
+	align-items: center;
+
+	background: transparent;
+	border: none;
+	cursor: pointer;
+
+	font-family: "Roboto", sans-serif;
+	font-weight: 700;
+	font-size: 16px;
+	line-height: 1.25;
+	color: #121417;
+}
+
+.login_logo {
+	width: 20px;
+	height: 20px;
+	margin-right: 8px;
+	fill: transparent;
+}
+
+.registration_button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: row;
+	gap: 8px;
+
+	border: none;
+	border-radius: 12px;
+	padding: 14px 39px;
+	width: 166px;
+	height: 48px;
+	cursor: pointer;
+
+	background: #121417;
+	
+	font-family: "Roboto", sans-serif;
+	font-weight: 700;
+	font-size: 16px;
+	line-height: 1.25;
+	color: #fff;
+}
