@@ -1,4 +1,5 @@
 .header {
+	padding-block: 20px;
 	width: 1184px;
 	margin-inline: auto;
 	display: flex;
@@ -22,7 +23,6 @@
 	display: inline-flex;
 	align-items: center;
 
-	font-family: var(--font-family), sans-serif;
 	font-weight: 500;
 	font-size: 20px;
 	line-height: 1.2;
@@ -41,8 +41,6 @@
 }
 
 .nav_item > a {
-	font-family: var(--font-family), sans-serif;
-	font-weight: 400;
 	font-size: 16px;
 	line-height: 1.25;
 	text-decoration-line: none;
@@ -62,8 +60,7 @@
 	background: transparent;
 	border: none;
 	cursor: pointer;
-
-	font-family: "Roboto", sans-serif;
+	
 	font-weight: 700;
 	font-size: 16px;
 	line-height: 1.25;
@@ -93,7 +90,6 @@
 
 	background: #121417;
 	
-	font-family: "Roboto", sans-serif;
 	font-weight: 700;
 	font-size: 16px;
 	line-height: 1.25;

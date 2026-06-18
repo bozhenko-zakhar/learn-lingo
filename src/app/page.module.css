@@ -1,3 +1,86 @@
 .main {
 	
 }
+
+.welcome_container {
+	width: 1312px;
+	display: flex;
+	gap: 24px;
+}
+
+.welcome_content {
+	background: #f8f8f8;
+	width: 720px;
+	border-radius: 30px;
+
+	padding-top: 85px;
+	padding-bottom: 111px;
+	padding-left: 64px;
+}
+
+.welcome_content > h1 {
+	width: 548px;
+	margin: 0 0 32px 0;
+
+	font-weight: 500;
+	font-size: 48px;
+	line-height: 1.16667;
+	letter-spacing: -0.02em;
+	color: #121417;
+}
+
+.marked_text {
+	position: relative;
+	top: 6;
+
+	display: inline-block;
+	margin-right: -6.5px;
+
+	width: 195px;
+	height: 40px;
+	border-radius: 8px;
+	background: #fbe9ba;
+	color: #121417;
+}
+
+.marked_text > span {
+	position: absolute;
+	top: -11;
+
+	font-style: italic;
+	font-weight: 400;
+}
+
+.welcome_content > p {
+	width: 471px;
+	margin: 0 0 64px 0;
+
+	font-size: 16px;
+	line-height: 1.375;
+	letter-spacing: -0.02em;
+	color: #121417;
+}
+
+.welcome_content > button {
+	border: none;
+	border-radius: 12px;
+	width: 267px;
+	height: 60px;
+
+	background: #f4c550;
+
+	font-weight: 700;
+	font-size: 18px;
+	line-height: 1.55556;
+	color: #121417;
+}
+
+.welcome_content > button:hover,
+.welcome_content > button:focus {
+	cursor: pointer;
+	background: #ffdc86;
+}
+
+.welcome_image_container {
+
+}
