@@ -19,6 +19,26 @@ export default function Home() {
 					/>
 				</div>
 			</div>
+			<div className={css.statistics_container}>
+				<ul className={css.statistics_list}>
+					<li className={css.statistics_item}>
+						<p>32,000 +</p>
+						<p>Experienced tutors</p>
+					</li>
+					<li className={css.statistics_item}>
+						<p>300,000 +</p>
+						<p>5-star tutor reviews</p>
+					</li>
+					<li className={css.statistics_item}>
+						<p>120 +</p>
+						<p>Subjects taught</p>
+					</li>
+					<li className={css.statistics_item}>
+						<p>200 +</p>
+						<p>Tutor nationalities</p>
+					</li>
+				</ul>
+			</div>
 		</main>
   );
 }

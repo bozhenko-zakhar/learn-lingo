@@ -1,11 +1,12 @@
 .main {
-	
+	width: 1312px;
 }
 
 .welcome_container {
-	width: 1312px;
 	display: flex;
 	gap: 24px;
+	width: 1312px;
+	margin-bottom: 24px;
 }
 
 .welcome_content {
@@ -81,6 +82,42 @@
 	background: #ffdc86;
 }
 
-.welcome_image_container {
+.welcome_image_container {}
 
+.statistics_container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 116px;
+
+	border: 1.5px dashed #f4c550;
+	border-radius: 15px;
+}
+
+.statistics_list {
+	display: flex;
+	gap: 100px;
+
+	width: 1067px;
+}
+
+.statistics_item {
+	display: flex;
+	gap: 16px;
+}
+
+.statistics_item > p:first-child {
+	font-weight: 500;
+	font-size: 28px;
+	line-height: 1.14286;
+	letter-spacing: -0.02em;
+	color: #121417;
+	text-wrap: nowrap;
+}
+
+.statistics_item > p:last-child {
+	font-size: 14px;
+	line-height: 1.28571;
+	letter-spacing: -0.02em;
+	color: rgba(18, 20, 23, 0.7);
 }
