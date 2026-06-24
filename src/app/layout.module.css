@@ -1,6 +1,7 @@
 .container {
 	box-sizing: border-box;
-	width: 1440px;
-	padding-inline: 64px;
+	min-width: 320px;
+	max-width: 375px;
+	padding-inline: 24px;
 	margin-inline: auto;
 }

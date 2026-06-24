@@ -16,6 +16,7 @@ export default function Home() {
 						alt="Smiling girl hiding behind laptop"
 						width={568}
 						height={530}
+						loading="eager"
 					/>
 				</div>
 			</div>

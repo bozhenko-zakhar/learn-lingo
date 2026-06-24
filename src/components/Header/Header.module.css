@@ -1,8 +1,9 @@
 .header {
 	padding-block: 20px;
-	width: 1184px;
+	max-width: 335px;
 	margin-inline: auto;
 	display: flex;
+	flex-wrap: wrap;
 	align-items: center;
 	justify-content: space-between;
 }
@@ -10,6 +11,7 @@
 .header_navigation {
 	display: flex;
 	align-items: center;
+	flex-wrap: wrap;
 	gap: 390px;
 }
 
