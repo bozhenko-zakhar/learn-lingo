@@ -1,8 +1,13 @@
+"use client"
+
 import Link from "next/link"
 import css from "./Header.module.css"
+import { useState } from "react";
+import clsx from "clsx";
 
 
 const Header = () => {
+	const [change, setChange] = useState(false);
 	return (
 		<header className={css.header}>
 			<div className={css.header_navigation}>
@@ -14,7 +19,7 @@ const Header = () => {
 					LearnLingo
 				</Link>
 
-				<nav>
+				<nav className={css.nav}>
 					<ul className={css.nav_list}>
 						<li className={css.nav_item}><Link href="/">Home</Link></li>
 						<li className={css.nav_item}><Link href="/teachers">Teachers</Link></li>
@@ -32,6 +37,33 @@ const Header = () => {
 				</button>
 
 				<button className={css.registration_button}>Registration</button>
+			</div>
+
+			<button onClick={() => setChange(!change)} className={clsx(css.burger_menu, change && css.active)}>
+				<span></span>
+				<span></span>
+				<span></span>
+			</button>
+
+			<div className={clsx(css.header_modal_overlay, change && css.active)}>
+				<div className={css.modal_container}>
+					<nav className={css.modal_nav}>
+						<ul className={css.modal_nav_list}>
+							<li className={css.modal_nav_item}><Link href="/">Home</Link></li>
+							<li className={css.modal_nav_item}><Link href="/teachers">Teachers</Link></li>
+						</ul>
+					</nav>
+					
+					<button className={css.modal_login_button}>
+						<svg className={css.modal_login_logo}>
+							<use href="/icons.svg#icon-auth"></use>
+						</svg>
+
+						Log in
+					</button>
+
+					<button className={css.modal_registration_button}>Registration</button>
+				</div>
 			</div>
 		</header>
 	);

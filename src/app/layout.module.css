@@ -1,5 +1,5 @@
 .container {
-	box-sizing: border-box;
+	position: relative;
 	min-width: 320px;
 	max-width: 375px;
 	padding-inline: 24px;

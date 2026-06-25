@@ -12,7 +12,7 @@
 	display: flex;
 	align-items: center;
 	flex-wrap: wrap;
-	gap: 390px;
+	/* gap: 390px; */
 }
 
 .favicon_logo {
@@ -34,6 +34,10 @@
 	color: #121417;
 }
 
+.nav {
+	display: none;
+}
+
 .nav_list {
 	display: flex;
 	gap: 28px;
@@ -48,8 +52,9 @@
 }
 
 .auth_actions {
-	display: flex;
-	gap: 16px;
+	display: none;
+	/* display: flex;
+	gap: 16px; */
 }
 
 .login_button {
@@ -92,3 +97,93 @@
 	line-height: 1.25;
 	color: #fff;
 }
+
+.burger_menu {
+	height: 32px;
+	width: 32px;
+	background: transparent;
+	border: none;;
+	position: relative;
+	z-index: 999;
+}
+
+.burger_menu span {
+	height: 3px;
+	width: 100%;
+	background: black;
+	border-radius: 25px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	transition: transform 0.3s, top 0.3s, opacity 0.3s;
+}
+
+.burger_menu span:nth-child(1) {
+	top: 25%;
+}
+
+.burger_menu span:nth-child(3) {
+	top: 75%;
+}
+
+.burger_menu.active span:nth-child(1) {
+	top: 50%;
+	transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.burger_menu.active span:nth-child(2) {
+	opacity: 0;
+}
+
+.burger_menu.active span:nth-child(3) {
+	top: 50%;
+	transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.header_modal_overlay {
+	position: fixed;
+	top: 0;
+	left: 768px;
+	width: 100%;
+	height: 100%;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+
+	background: white;
+	transition: left 0.3s;
+}
+
+.header_modal_overlay.active {
+	left: 0;
+}
+
+.modal_container {
+	position: relative;
+	top: 72px;
+	min-width: 320px;
+	max-width: 335px;
+	padding-inline: 24px;
+}
+
+.modal_nav {}
+
+.modal_nav_list {}
+
+.modal_nav_item {
+	text-align: center;
+}
+
+.modal_nav_item {}
+
+.modal_login_button {}
+
+.modal_login_logo {
+	width: 24px;
+	height: 24px;
+}
+
+.modal_registration_button {}
