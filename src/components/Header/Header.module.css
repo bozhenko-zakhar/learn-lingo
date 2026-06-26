@@ -12,7 +12,6 @@
 	display: flex;
 	align-items: center;
 	flex-wrap: wrap;
-	/* gap: 390px; */
 }
 
 .favicon_logo {
@@ -104,7 +103,7 @@
 	background: transparent;
 	border: none;;
 	position: relative;
-	z-index: 999;
+	z-index: 2;
 }
 
 .burger_menu span {
@@ -147,13 +146,14 @@
 	left: 768px;
 	width: 100%;
 	height: 100%;
+	z-index: 1;
 
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 
-
 	background: white;
+
 	transition: left 0.3s;
 }
 
@@ -162,6 +162,10 @@
 }
 
 .modal_container {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+	
 	position: relative;
 	top: 72px;
 	min-width: 320px;
@@ -169,21 +173,63 @@
 	padding-inline: 24px;
 }
 
-.modal_nav {}
-
-.modal_nav_list {}
-
-.modal_nav_item {
-	text-align: center;
+.modal_nav_list {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
 }
 
-.modal_nav_item {}
+.modal_nav_item > a {
+	line-height: 1.25;
+	text-decoration-line: none;
 
-.modal_login_button {}
+	color: #121417;
+}
+
+.modal_login_button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 8px;
+
+	font-weight: 700;
+	line-height: 1.25;
+	color: #121417;
+
+	background: white;
+	border: 1px solid rgba(18, 20, 23, 0.1);
+	border-radius: 12px;
+	padding: 14px 39px;
+	height: 48px;
+}
 
 .modal_login_logo {
 	width: 24px;
 	height: 24px;
+	fill: transparent;
 }
 
-.modal_registration_button {}
+.modal_registration_button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: row;
+
+	border: none;
+	border-radius: 12px;
+	padding: 14px 39px;
+	height: 48px;
+
+	background: #121417;
+	
+	font-weight: 700;
+	font-size: 16px;
+	line-height: 1.25;
+	color: #fff;
+}
+
+@media (min-width: 768px) {
+	.header_modal_overlay {
+		display: none;
+	}
+}
