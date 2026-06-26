@@ -1,3 +1,7 @@
+.main {
+	padding-bottom: 32px;
+}
+
 .welcome_container {
 	display: flex;
 	flex-wrap: wrap;
@@ -10,9 +14,8 @@
 	max-width: 335px;
 	border-radius: 30px;
 
-	/* padding-top: 85px;
-	padding-bottom: 111px;
-	padding-left: 64px; */
+	padding-block: 64px;
+	padding-inline: 16px;
 }
 
 .welcome_content > h1 {
@@ -20,7 +23,7 @@
 	margin: 0 0 32px 0;
 
 	font-weight: 500;
-	font-size: 48px;
+	font-size: 36px;
 	line-height: 1.16667;
 	letter-spacing: -0.02em;
 	color: #121417;
@@ -31,10 +34,10 @@
 	top: 6;
 
 	display: inline-block;
-	margin-right: -6.5px;
+	margin-right: -4.5px;
 
-	width: 195px;
-	height: 40px;
+	width: 150px;
+	height: 30px;
 	border-radius: 8px;
 	background: #fbe9ba;
 	color: #121417;
@@ -42,7 +45,7 @@
 
 .marked_text > span {
 	position: absolute;
-	top: -11;
+	top: -10;
 
 	font-style: italic;
 	font-weight: 400;
@@ -52,7 +55,7 @@
 	/* width: 471px; */
 	margin: 0 0 64px 0;
 
-	font-size: 16px;
+	font-size: 14px;
 	line-height: 1.375;
 	letter-spacing: -0.02em;
 	color: #121417;
@@ -61,13 +64,13 @@
 .welcome_content > button {
 	border: none;
 	border-radius: 12px;
-	width: 267px;
+	width: 100%;
 	height: 60px;
 
 	background: #f4c550;
 
 	font-weight: 700;
-	font-size: 18px;
+	font-size: 16px;
 	line-height: 1.55556;
 	color: #121417;
 }
@@ -78,22 +81,27 @@
 	background: #ffdc86;
 }
 
-.welcome_image_container {}
+.welcome_image_container {
+	display: none;
+}
 
 .statistics_container {
-	display: flex;
+	/* display: flex;
 	justify-content: center;
-	align-items: center;
+	align-items: center; */
 	/* height: 116px; */
 
 	border: 1.5px dashed #f4c550;
 	border-radius: 15px;
+	padding-block: 40px;
 }
 
 .statistics_list {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 100px;
+	justify-content: center;
+	align-content: center;
+	gap: 40px; /* 100px */
 
 	/* width: 1067px; */
 }
@@ -105,7 +113,7 @@
 
 .statistics_item > p:first-child {
 	font-weight: 500;
-	font-size: 28px;
+	font-size: 24px;
 	line-height: 1.14286;
 	letter-spacing: -0.02em;
 	color: #121417;
@@ -113,7 +121,7 @@
 }
 
 .statistics_item > p:last-child {
-	font-size: 14px;
+	font-size: 12px;
 	line-height: 1.28571;
 	letter-spacing: -0.02em;
 	color: rgba(18, 20, 23, 0.7);
