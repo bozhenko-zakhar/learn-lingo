@@ -1,6 +1,5 @@
 .header {
 	padding-block: 20px;
-	max-width: 335px;
 	margin-inline: auto;
 	display: flex;
 	flex-wrap: wrap;
@@ -25,7 +24,7 @@
 	align-items: center;
 
 	font-weight: 500;
-	font-size: 20px;
+	font-size: 18px;
 	line-height: 1.2;
 	letter-spacing: -0.02em;
 	text-decoration-line: none;
@@ -43,7 +42,7 @@
 }
 
 .nav_item > a {
-	font-size: 16px;
+	font-size: 14px;
 	line-height: 1.25;
 	text-decoration-line: none;
 
@@ -52,8 +51,6 @@
 
 .auth_actions {
 	display: none;
-	/* display: flex;
-	gap: 16px; */
 }
 
 .login_button {
@@ -64,7 +61,7 @@
 	border: none;
 	
 	font-weight: 700;
-	font-size: 16px;
+	font-size: 14px;
 	line-height: 1.25;
 	color: #121417;
 }
@@ -92,14 +89,14 @@
 	background: #121417;
 	
 	font-weight: 700;
-	font-size: 16px;
+	font-size: 14px;
 	line-height: 1.25;
 	color: #fff;
 }
 
 .burger_menu {
-	height: 32px;
-	width: 32px;
+	height: 28px;
+	width: 28px;
 	background: transparent;
 	border: none;;
 	position: relative;
@@ -107,7 +104,7 @@
 }
 
 .burger_menu span {
-	height: 3px;
+	height: 2.5px;
 	width: 100%;
 	background: black;
 	border-radius: 25px;
@@ -197,9 +194,8 @@
 	color: #121417;
 
 	background: white;
-	border: 1px solid rgba(18, 20, 23, 0.1);
+	border: 2px solid rgba(18, 20, 23, 0.1);
 	border-radius: 12px;
-	padding: 14px 39px;
 	height: 48px;
 }
 
@@ -217,7 +213,6 @@
 
 	border: none;
 	border-radius: 12px;
-	padding: 14px 39px;
 	height: 48px;
 
 	background: #121417;
@@ -229,7 +224,48 @@
 }
 
 @media (min-width: 768px) {
-	.header_modal_overlay {
+	.header {
+		width: 720px;
+		padding-inline: 32px;
+	}
+
+	.favicon_link {
+		margin-right: 28px;
+	}
+
+	.header_modal_overlay,
+	.burger_menu {
 		display: none;
+	}
+
+	.nav {
+		display: block;
+	}
+
+	.auth_actions {
+		display: flex;
+		gap: 16px;
+	}
+}
+
+@media (min-width: 1440px) {
+	.header {
+		width: 1184px;
+		padding-inline: 32px;
+	}
+
+	.header_navigation {
+		gap: 390px;
+	}
+
+	.favicon_link {
+		font-size: 20px;
+		margin-right: 0;
+	}
+
+	.nav_item > a,
+	.login_button,
+	.registration_button {
+		font-size: 16px;
 	}
 }
