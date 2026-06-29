@@ -2,12 +2,14 @@
 
 import Link from "next/link"
 import css from "./Header.module.css"
-import { useState } from "react";
+import { use, useState } from "react";
 import clsx from "clsx";
+import { ModalContext } from "../ModalViewProvider/ModalViewProvider";
 
 
 const Header = () => {
 	const [isOpened, setOpen] = useState(false);
+	const context = use(ModalContext);
 
 	return (
 		<header className={css.header}>
@@ -29,7 +31,7 @@ const Header = () => {
 			</div>
 
 			<div className={css.auth_actions}>
-				<button className={css.login_button}>
+				<button onClick={() => context?.setIsOpen(true)} className={css.login_button}>
 					<svg className={css.login_logo}>
 						<use href="/icons.svg#icon-auth"></use>
 					</svg>
@@ -37,7 +39,7 @@ const Header = () => {
 					Log in
 				</button>
 
-				<button className={css.registration_button}>Registration</button>
+				<button onClick={() => context?.setIsOpen(true)} className={css.registration_button}>Registration</button>
 			</div>
 
 			<button onClick={() => setOpen(!isOpened)} className={clsx(css.burger_menu, isOpened && css.active)}>

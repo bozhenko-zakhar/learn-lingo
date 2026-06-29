@@ -3,6 +3,7 @@ import { Roboto } from "next/font/google"
 import "./globals.css";
 import Header from "@/components/Header/Header";
 import css from "./layout.module.css"
+import ModalViewProvider from "@/components/ModalViewProvider/ModalViewProvider";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -25,8 +26,10 @@ export default function RootLayout({
     <html lang="en">
 			<body className={roboto.variable}>
 				<div className={css.container}>
-					<Header />
-					{children}
+					<ModalViewProvider>
+						<Header />
+						{children}
+					</ModalViewProvider>
 				</div>
 			</body>
     </html>
