@@ -31,7 +31,10 @@ const Header = () => {
 			</div>
 
 			<div className={css.auth_actions}>
-				<button onClick={() => context?.setIsOpen(true)} className={css.login_button}>
+				<button onClick={() => {
+					context?.setIsOpen(true);
+					context?.setModalForm("login");
+				}} className={css.login_button}>
 					<svg className={css.login_logo}>
 						<use href="/icons.svg#icon-auth"></use>
 					</svg>
@@ -39,7 +42,10 @@ const Header = () => {
 					Log in
 				</button>
 
-				<button onClick={() => context?.setIsOpen(true)} className={css.registration_button}>Registration</button>
+				<button  onClick={() => {
+					context?.setIsOpen(true);
+					context?.setModalForm("register");
+				}} className={css.registration_button}>Registration</button>
 			</div>
 
 			<button onClick={() => setOpen(!isOpened)} className={clsx(css.burger_menu, isOpened && css.active)}>
