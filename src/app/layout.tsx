@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header/Header";
 import css from "./layout.module.css"
 import ModalViewProvider from "@/components/ModalViewProvider/ModalViewProvider";
+import BodyBackground from "@/hooks/BodyBackground";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -18,9 +19,9 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
-  children,
+	children
 }: Readonly<{
-  children: React.ReactNode;
+	children: React.ReactNode
 }>) {
   return (
     <html lang="en">
@@ -28,6 +29,7 @@ export default function RootLayout({
 				<div className={css.container}>
 					<ModalViewProvider>
 						<Header />
+						<BodyBackground />
 						{children}
 					</ModalViewProvider>
 				</div>

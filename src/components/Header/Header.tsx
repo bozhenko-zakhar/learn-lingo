@@ -42,7 +42,7 @@ const Header = () => {
 					Log in
 				</button>
 
-				<button  onClick={() => {
+				<button onClick={() => {
 					context?.setIsOpen(true);
 					context?.setModalForm("register");
 				}} className={css.registration_button}>Registration</button>
@@ -73,7 +73,11 @@ const Header = () => {
 						</ul>
 					</nav>
 					
-					<button className={css.modal_login_button}>
+					<button onClick={() => {
+						context?.setIsOpen(true);
+						context?.setModalForm("register");
+					}} className={css.modal_login_button}
+					>
 						Log in
 
 						<svg className={css.modal_login_logo}>
@@ -81,7 +85,10 @@ const Header = () => {
 						</svg>
 					</button>
 
-					<button className={css.modal_registration_button}>Registration</button>
+					<button onClick={() => {
+						context?.setIsOpen(true);
+						context?.setModalForm("register");
+					}} className={css.modal_registration_button}>Registration</button>
 				</div>
 			</div>
 		</header>

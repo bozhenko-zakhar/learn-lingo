@@ -1,8 +1,8 @@
+import TeachersClientPage from "./page.client";
 
-
-const TeachersPage = () => {
+const TeachersPage = async () => {
 	return (
-		<></>
+		<TeachersClientPage />
 	);
 };
 

@@ -1,0 +1,45 @@
+.container {
+	width: 221px;
+}
+
+.control {
+	border-radius: 14px;
+	padding: 16px;
+	background: #fff;
+}
+
+.control,
+.placeholder,
+.option,
+.selectedOption,
+.noOptionsMessage {
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 1.11111;
+	color: #121417;
+}
+
+.control,
+.option,
+.selectedOption {
+	cursor: pointer !important;
+}
+
+.menuList {
+	margin-top: 8px;
+
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	border-radius: 12px;
+	padding: 14px 18px;
+	background: #fff;
+}
+
+.option {
+	color: rgba(18, 20, 23, 0.2);
+}
+
+.selectedOption {
+	color: #121417;
+}
