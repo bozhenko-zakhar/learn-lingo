@@ -1,0 +1,68 @@
+.filter_container {
+	display: flex;
+	gap: 20px;
+}
+
+.filter_container > li > p {
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 1.28571;
+	color: #8a8a89;
+}
+
+.container.lang {
+	width: 221px;
+}
+
+.container.level {
+	width: 198px;
+}
+
+.container.price {
+	width: 124px;
+}
+
+.control {
+	border-radius: 14px;
+	padding: 16px;
+	background: #fff;
+}
+
+.control,
+.placeholder,
+.option,
+.selectedOption,
+.noOptionsMessage {
+	font-weight: 500;
+	font-size: 18px !important;
+	line-height: 1.11111;
+	color: #121417;
+}
+
+.control,
+.option,
+.selectedOption {
+	cursor: pointer !important;
+}
+
+.menuList {
+	margin-top: 8px;
+
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	border-radius: 12px;
+	padding: 14px 18px;
+	background: #fff;
+}
+
+.option {
+	color: rgba(18, 20, 23, 0.2);
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.selectedOption {
+	color: #121417;
+}
