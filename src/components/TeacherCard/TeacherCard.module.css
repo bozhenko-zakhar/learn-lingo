@@ -8,10 +8,27 @@
 	background: #fff;
 }
 
+.image_container {
+	position: relative;
+}
+
 .teachers_image {
 	outline: 3px solid #fbe9ba;
 	outline-offset: 9px;
 	border-radius: 100px;
+}
+
+.teachers_icon {
+	position: absolute;
+	top: 8.5;
+	right: 8.5;
+
+	display: block;
+	width: 12px;
+	height: 12px;
+	background: #38cd3e;
+	border: 2px solid white;
+	border-radius: 50%;
 }
 
 .teachers_raiting {

@@ -11,14 +11,17 @@ const TeacherCard = () => {
 
 	return (
 		<div className={css.card_container}>
-			<Image
-				className={css.teachers_image}
-				src="/Jane Smith.jpg"
-				alt="Jane Smith's face"
-				width={96}
-				height={96}
-				loading="eager"
-			/>
+			<div className={css.image_container}>
+				<Image
+					className={css.teachers_image}
+					src="/Jane Smith.jpg"
+					alt="Jane Smith's face"
+					width={96}
+					height={96}
+					loading="eager"
+				/>
+				<span className={css.teachers_icon}></span>
+			</div>
 			
 			<div className={css.statistics}>
 				<div className={css.teachers_raiting}>
