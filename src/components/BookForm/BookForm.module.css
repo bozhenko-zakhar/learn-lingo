@@ -1,0 +1,185 @@
+.form > h2 {
+	font-weight: 500;
+	font-size: 32px;
+	line-height: 1.2;
+	letter-spacing: -0.02em;
+	color: #121417;
+
+	margin-bottom: 20px;
+}
+
+.form > p {
+	font-size: 14px;
+	line-height: 1.375;
+	color: rgba(18, 20, 23, 0.8);
+
+	margin-bottom: 20px;
+}
+
+.teachers_info {
+	display: flex;
+	gap: 14px;
+
+	margin-bottom: 40px;
+}
+
+.teachers_info > img {
+	border-radius: 50%;
+}
+
+.teachers_names {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.teachers_info p {
+	font-weight: 500;
+	font-size: 10px;
+	line-height: 1.33333;
+	color: #8a8a89;
+}
+
+.teachers_info h4 {
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 1.5;
+	color: #121417;
+}
+
+.fieldset {
+	margin-bottom: 40px;
+}
+
+.fieldset > legend {
+	font-weight: 500;
+	font-size: 20px;
+	line-height: 1.33333;
+	color: #121417;
+
+	margin-bottom: 20px;
+}
+
+.fieldset > label {
+	display: flex;
+	align-items: center;
+	gap: 15px;
+
+	padding-left: 7px;
+}
+
+.fieldset > label:not(:last-child) {
+	margin-bottom: 23px;
+}
+
+.fieldset > label > span {
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 1.375;
+	text-align: center;
+	color: #121417;
+}
+
+.fieldset input {
+	display: block;
+
+	appearance: none;
+	-webkit-appearance: none;
+	margin: 0;
+
+	border-radius: 12px;
+	width: 10px;
+	height: 10px;
+	outline: 2px solid #d0d0d1;
+	outline-offset: 3px;
+	background: transparent;
+}
+
+.fieldset input.active {
+	outline: 2px solid #f4c550;
+	background: #f4c550;
+}
+
+.inputs_container {
+	display: flex;
+	flex-direction: column;
+	gap: 18px;
+
+	margin-bottom: 40px;
+}
+
+.input {
+	display: block;
+	width: 100%;
+	height: 54px;
+
+	border: 1px solid rgba(18, 20, 23, 0.1);
+	border-radius: 12px;
+	padding: 16px 48px 16px 16px;
+
+	font-size: 14px;
+	line-height: 1.375;
+	color: #121417;
+}
+
+.input:focus {
+	outline: none;
+}
+
+.input::placeholder {
+	font-size: 14px;
+	line-height: 1.375;
+	color: #121417;
+}
+
+.button {
+	display: block;
+	width: 100%;
+	height: 60px;
+	border-radius: 12px;
+	background: #f4c550;
+
+	font-weight: 700;
+	font-size: 16px;
+	line-height: 1.55556;
+	color: #121417;
+}
+
+.button:hover,
+.button:focus {
+	outline: none;
+	background: #ffdc86;
+}
+
+
+
+@media (min-width: 1440px) {
+	.teachers_image {
+		width: 44px;
+		height: 44px;
+	}
+
+	.form > h2 {
+		font-size: 40px;
+	}
+
+	.fieldset > legend {
+		font-size: 24px;
+	}
+
+	.teachers_info p {
+		font-size: 12px;
+	}
+
+	.form > p,
+	.input,
+	.input::placeholder,
+	.teachers_info h4,
+	.fieldset > label > span {
+		font-size: 16px;
+	}
+
+	.button {
+		font-size: 18px;
+	}
+}

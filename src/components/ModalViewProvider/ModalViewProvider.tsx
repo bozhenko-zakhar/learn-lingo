@@ -5,10 +5,11 @@ import { createPortal } from "react-dom"
 import css from "./ModalViewProvider.module.css"
 import LoginForm from "../LoginForm/LoginForm";
 import RegistrationForm from "../RegistrationForm/RegistrationForm";
+import BookForm from "../BookForm/BookForm";
 
 interface ModalContextValue {
 	setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
-	setModalForm: React.Dispatch<React.SetStateAction<"login" | "register" | null>>
+	setModalForm: React.Dispatch<React.SetStateAction<"login" | "register" | "book" | null>>
 }
 
 export const ModalContext = createContext<ModalContextValue | null>(null);
@@ -19,7 +20,7 @@ type Props = {
 
 const ModalViewProvider = ({ children }: Props) => {
 	const [isOpen, setIsOpen] = useState<boolean>(false);
-	const [modalForm, setModalForm] = useState<"login" | "register" | null>(null);
+	const [modalForm, setModalForm] = useState<"login" | "register" | "book" | null>(null);
 
 	function handleOverlayClick(event: React.MouseEvent<HTMLDivElement>) {
 		if (event.target === event.currentTarget) {
@@ -58,6 +59,7 @@ const ModalViewProvider = ({ children }: Props) => {
 							{
 								modalForm === "login" ? <LoginForm /> :
 								modalForm === "register" ? <RegistrationForm /> :
+								modalForm === "book" ? <BookForm /> :
 								null
 							}
 						</div>

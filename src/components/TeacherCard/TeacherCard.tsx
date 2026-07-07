@@ -2,10 +2,12 @@
 
 import Image from "next/image";
 import css from "./TeacherCard.module.css";
-import { useState } from "react";
+import { use, useState } from "react";
+import { ModalContext } from "../ModalViewProvider/ModalViewProvider";
 
 const TeacherCard = () => {
 	const [isReadMore, setReadMore] = useState(false);
+	const context = use(ModalContext);
 
 	return (
 		<div className={css.card_container}>
@@ -67,7 +69,7 @@ const TeacherCard = () => {
 								<Image
 									className={css.comment_image}
 									src="/Frank.jpg"
-									alt="Jane Smith's face"
+									alt="Frank's face"
 									width={44}
 									height={44}
 									loading="eager"
@@ -98,7 +100,10 @@ const TeacherCard = () => {
 
 				{
 					isReadMore &&
-					<button>Book trial lesson</button>
+					<button  onClick={() => {
+						context?.setIsOpen(true);
+						context?.setModalForm("book");
+					}}>Book trial lesson</button>
 				}
 			</div>
 		</div>
