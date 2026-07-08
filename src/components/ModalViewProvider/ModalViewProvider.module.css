@@ -5,22 +5,23 @@
 	width: 100%;
 	height: 100%;
 	padding-inline: 16px;
+	padding-block: 32px;
 	background-color: rgba(33, 37, 41, 0.6);
 	display: flex;
-	align-items: center;
 	justify-content: center;
 	z-index: 1000;
 
-	overflow-y: auto;
+	overflow: auto;
 }
 
 .modal_container {
+	position: relative;
 	background-color: #ffffff;
-	padding: 64px;
 	border-radius: 8px;
 	min-width: 325px;
 	max-width: 375px;
-	position: relative;
+	height: fit-content;
+	padding: 64px;
 }
 
 .icon_container {

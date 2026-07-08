@@ -1,5 +1,6 @@
 .filter_container {
 	display: flex;
+	flex-direction: column;
 	gap: 20px;
 }
 
@@ -10,16 +11,8 @@
 	color: #8a8a89;
 }
 
-.container.lang {
-	width: 221px;
-}
-
-.container.level {
-	width: 198px;
-}
-
-.container.price {
-	width: 124px;
+.container {
+	width: 100%;
 }
 
 .control {
@@ -65,4 +58,29 @@
 
 .selectedOption {
 	color: #121417;
+}
+
+@media (min-width: 768px) {
+	.filter_container {
+		flex-direction: row;
+		justify-content: center;
+	}
+
+	.container.lang {
+		width: 221px;
+	}
+
+	.container.level {
+		width: 198px;
+	}
+
+	.container.price {
+		width: 124px;
+	}
+}
+
+@media (min-width: 1440px) {
+	.filter_container {
+		justify-content: flex-start;
+	}
 }
