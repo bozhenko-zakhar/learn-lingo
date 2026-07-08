@@ -7,10 +7,15 @@ import { ModalContext } from "../ModalViewProvider/ModalViewProvider";
 
 const TeacherCard = () => {
 	const [isReadMore, setReadMore] = useState(false);
+	const [isColoured, setColoured] = useState(false)
 	const context = use(ModalContext);
 
 	return (
 		<div className={css.card_container}>
+			<svg onClick={() => setColoured(!isColoured)} className={css.fav_icon}>
+				<use href={isColoured ? "/icons.svg#icon-favorite" : "/icons.svg#icon-favorite-uncoloured"}></use>
+			</svg>
+
 			<div className={css.image_container}>
 				<Image
 					className={css.teachers_image}
@@ -20,31 +25,35 @@ const TeacherCard = () => {
 					height={96}
 					loading="eager"
 				/>
-				<span className={css.teachers_icon}></span>
+				<div className={css.teachers_icon}></div>
 			</div>
 			
 			<div className={css.statistics}>
-				<div className={css.teachers_raiting}>
-					<p>Languages</p>
-					<p>
-						<svg className={css.icon}>
-							<use href="/icons.svg#icon-book-open"></use>
-						</svg>
-						Lessons online
-					</p>
-					<p>Lessons done: 1098</p>
-					<p>
-						<svg className={css.icon}>
-							<use href="/icons.svg#icon-star"></use>
-						</svg>
-						Rating: 4.8
-					</p>
-					<p>
-						Price / 1 hour: <span>30$</span>
-					</p>
-				</div>
+				<div className={css.teachers_stack}>
+					<div className={css.teachers_spec}>
+						<p>Languages</p>
+						<h3>Jane Smith</h3>
+					</div>
 
-				<h3>Jane Smith</h3>
+					<div className={css.teachers_raiting}>
+						<p>
+							<svg className={css.icon}>
+								<use href="/icons.svg#icon-book-open"></use>
+							</svg>
+							Lessons online
+						</p>
+						<p>Lessons done: 1098</p>
+						<p>
+							<svg className={css.icon}>
+								<use href="/icons.svg#icon-star"></use>
+							</svg>
+							Rating: 4.8
+						</p>
+						<p>
+							Price / 1 hour: <span>30$</span>
+						</p>
+					</div>
+				</div>
 
 				<div className={css.teachers_skills}>
 					<p>Speaks: <span>German, French</span></p>

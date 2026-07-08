@@ -1,4 +1,5 @@
 .card_container {
+	position: relative;
 	display: flex;
 	flex-direction: row;
 	gap: 60px;
@@ -8,8 +9,25 @@
 	background: #fff;
 }
 
+.fav_icon {
+	position: absolute;
+	top: 24px;
+	right: 24px;
+
+	fill: transparent;
+	width: 26px;
+	height: 26px;
+
+	cursor: pointer;
+}
+
 .image_container {
+	display: none;
+
 	position: relative;
+	width: fit-content;
+	flex-shrink: 0;
+	margin: 12px 0 0 12px;
 }
 
 .teachers_image {
@@ -23,7 +41,6 @@
 	top: 8.5;
 	right: 8.5;
 
-	display: block;
 	width: 12px;
 	height: 12px;
 	background: #38cd3e;
@@ -31,34 +48,49 @@
 	border-radius: 50%;
 }
 
-.teachers_raiting {
+.statistics {
+	width: 100%;
+}
+
+.teachers_stack {
 	display: flex;
+	flex-direction: column;
+	gap: 32px;
+
+	margin-bottom: 32px;
+}
+
+.teachers_spec > p {
+	font-size: 14px; /* 16 */
+	font-weight: 500;
+	line-height: 1.5;
+	color: #8a8a89;
+
 	margin-bottom: 8px;
 }
 
-.teachers_raiting > p {
+.teachers_spec > h3 {
 	font-weight: 500;
-	line-height: 1.5;
+	font-size: 20px; /* 24 */
+	line-height: 1;
 	color: #121417;
 }
 
-.teachers_raiting > p:not(:first-child) {
+.teachers_raiting {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	text-wrap: wrap;
+}
+
+.teachers_raiting > p {
 	display: flex;
 	align-items: center;
 
-	border-right: 1px solid rgba(18, 20, 23, 0.2);
-	padding-right: 15px;
-	padding-left: 15px;
-}
-
-.teachers_raiting > p:first-child {
-	color: #8a8a89;
-	margin-right: 192px;
-}
-
-.teachers_raiting > p:last-child {
-	border-right: none;
-	padding-right: 0;
+	font-weight: 500;
+	font-size: 14px; /* 16 */
+	line-height: 1.5;
+	color: #121417;
 }
 
 .teachers_raiting > p > span {
@@ -74,15 +106,6 @@
 	margin-right: 8px;
 }
 
-.teachers_raiting + h3 {
-	font-weight: 500;
-	font-size: 24px;
-	line-height: 1;
-	color: #121417;
-
-	margin-bottom: 32px;
-}
-
 .teachers_skills {
 	display: flex;
 	flex-direction: column;
@@ -94,6 +117,8 @@
 .teachers_skills > p,
 .teachers_skills span {
 	font-weight: 500;
+	font-size: 14px; /* 16 */
+	word-wrap: break-word;
 	line-height: 1.5;
 	color: #8a8a89;
 }
@@ -108,6 +133,7 @@
 }
 
 .teachers_about_me {
+	font-size: 14px; /* 16 */
 	line-height: 1.5;
 	color: #121417;
 
@@ -119,7 +145,7 @@
 	background: transparent;
 
 	font-weight: 500;
-	font-size: 16px;
+	font-size: 14px; /* 16 */
 	line-height: 1.5;
 	text-decoration: underline;
 	text-decoration-skip-ink: none;
@@ -137,28 +163,37 @@
 	gap: 12px;
 }
 
-
 .comment_names {
 	margin-bottom: 16px;
 }
 
-.comment_image {}
+.comment_names > p:first-child {
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 1.5;
+	color: #8a8a89;
+}
 
 .comment_names > p:last-child {
 	display: flex;
+
+	font-weight: 500;
+	font-size: 12px;
+	line-height: 1.28571;
+	color: #121417;
 }
 
 .comment_user > div + p {
 	font-weight: 500;
+	font-size: 14px; /* 16 */
 	line-height: 1.5;
 	color: #121417;
 }
 
 .teachers_levels {
 	display: flex;
+	flex-direction: column;
 	gap: 8px;
-
-	margin-bottom: 32px;
 }
 
 .teachers_levels > li {
@@ -167,7 +202,7 @@
 	padding: 8px 12px;
 
 	font-weight: 500;
-	font-size: 14px;
+	font-size: 12px; /* 14 */
 	line-height: 1.14286;
 	color: #121417;
 }
@@ -178,18 +213,83 @@
 }
 
 .teachers_levels + button {
+	margin-top: 32px;
+
+	width: 100%;
+	height: 60px;
 	background: #f4c550;
 	border: none;
 	border-radius: 12px;
-	padding: 16px 48px;
-
 
 	font-weight: 700;
-	font-size: 18px;
+	font-size: 16px; /* 18 */
 	line-height: 1.55556;
 	color: #121417;
 }
 
 .teachers_levels + button:hover {
 	background: #ffdc86;
+}
+
+@media (min-width: 1440px) {
+	.teachers_levels > li,
+	.comment_names > p:last-child {
+		font-size: 14px;
+	}
+
+	.teachers_spec > p,
+	.teachers_raiting > p,
+	.teachers_skills > p,
+	.teachers_skills span,
+	.teachers_about_me,
+	.teachers_skills + button,
+	.comment_user > div + p,
+	.comment_names > p:first-child {
+		font-size: 16px;
+	}
+
+	.teachers_levels + button {
+		font-size: 18px;
+	}
+
+	.teachers_spec > h3 {
+		font-size: 24px;
+	}
+
+  .image_container {
+		display: block;
+	}
+
+	.teachers_stack {
+		gap: 149px
+	}
+
+	.teachers_stack,
+	.teachers_raiting {
+		flex-direction: row;
+	}
+
+	.teachers_raiting > p {
+		border-right: 1px solid rgba(18, 20, 23, 0.2);
+		padding-right: 15px;
+		padding-left: 15px;
+	}
+	
+	.teachers_raiting > p:first-child {
+		padding-left: 0;
+	}
+	
+	.teachers_raiting > p:last-child {
+		border-right: none;
+		padding-right: 0;
+	}
+
+	.teachers_levels {
+		flex-direction: row;
+	}
+
+	.teachers_levels + button {
+		width: 232px;
+	}
+
 }

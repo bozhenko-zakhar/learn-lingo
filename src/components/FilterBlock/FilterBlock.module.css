@@ -6,7 +6,7 @@
 
 .filter_container > li > p {
 	font-weight: 500;
-	font-size: 14px;
+	font-size: 12px;
 	line-height: 1.28571;
 	color: #8a8a89;
 }
@@ -27,7 +27,7 @@
 .selectedOption,
 .noOptionsMessage {
 	font-weight: 500;
-	font-size: 18px !important;
+	font-size: 16px !important;
 	line-height: 1.11111;
 	color: #121417;
 }
@@ -80,6 +80,18 @@
 }
 
 @media (min-width: 1440px) {
+	.filter_container > li > p {
+		font-size: 14px !important;
+	}
+
+	.control,
+	.placeholder,
+	.option,
+	.selectedOption,
+	.noOptionsMessage {
+		font-size: 18px !important;
+	}
+
 	.filter_container {
 		justify-content: flex-start;
 	}

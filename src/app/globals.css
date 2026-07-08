@@ -7,7 +7,7 @@
 body {
 	font-family: var(--font-family);
 	margin: 0px;
-	/* overflow: auto !important; */
+	overflow: auto !important;
 }
 
 img,
