@@ -4,8 +4,37 @@ import Image from "next/image";
 import css from "./TeacherCard.module.css";
 import { use, useState } from "react";
 import { ModalContext } from "../ModalViewProvider/ModalViewProvider";
+import { Reviewer } from "@/firebase/types";
 
-const TeacherCard = () => {
+type Props = {
+	avatar_url: string;
+	name: string;
+	surname: string;
+	conditions: string[];
+	lessons_done: number;
+	languages: string[];
+	levels: string[];
+	lesson_info: string;
+	price_per_hour: number;
+	rating: number;
+	experience: string;
+	reviews: Reviewer[];
+}
+
+const TeacherCard = ({
+	avatar_url,
+	name,
+	surname,
+	conditions,
+	lessons_done,
+	languages,
+	levels,
+	lesson_info,
+	price_per_hour,
+	rating,
+	experience,
+	reviews
+}: Props) => {
 	const [isReadMore, setReadMore] = useState(false);
 	const [isColoured, setColoured] = useState(false)
 	const context = use(ModalContext);
@@ -19,8 +48,8 @@ const TeacherCard = () => {
 			<div className={css.image_container}>
 				<Image
 					className={css.teachers_image}
-					src="/Jane Smith.jpg"
-					alt="Jane Smith's face"
+					src={avatar_url || "/default_image.jpg"}
+					alt={`${name} ${surname}'s face`}
 					width={96}
 					height={96}
 					loading="eager"
@@ -32,7 +61,7 @@ const TeacherCard = () => {
 				<div className={css.teachers_stack}>
 					<div className={css.teachers_spec}>
 						<p>Languages</p>
-						<h3>Jane Smith</h3>
+						<h3>{name} {surname}</h3>
 					</div>
 
 					<div className={css.teachers_raiting}>
@@ -42,28 +71,28 @@ const TeacherCard = () => {
 							</svg>
 							Lessons online
 						</p>
-						<p>Lessons done: 1098</p>
+						<p>Lessons done: {lessons_done}</p>
 						<p>
 							<svg className={css.icon}>
 								<use href="/icons.svg#icon-star"></use>
 							</svg>
-							Rating: 4.8
+							Rating: {rating}
 						</p>
 						<p>
-							Price / 1 hour: <span>30$</span>
+							Price / 1 hour: <span>{price_per_hour}$</span>
 						</p>
 					</div>
 				</div>
 
 				<div className={css.teachers_skills}>
-					<p>Speaks: <span>German, French</span></p>
-					<p>Lesson Info: <span>Lessons are structured to cover grammar, vocabulary, and practical usage of the language.</span></p>
-					<p>Conditions: <span>Welcomes both adult learners and teenagers (13 years and above). Provides personalized study plans</span></p>
+					<p>Speaks: <span>{languages?.join(", ")}</span></p>
+					<p>Lesson Info: <span>{lesson_info}</span></p>
+					<p>Conditions: <span>{conditions?.join(" ")}</span></p>
 				</div>
 
 				{
 					isReadMore &&
-					<p className={css.teachers_about_me}>Jane is an experienced and dedicated language teacher specializing in German and French. She holds a Bachelor&apos;s degree in German Studies and a Master&apos;s degree in French Literature. Her passion for languages and teaching has driven her to become a highly proficient and knowledgeable instructor. With over 10 years of teaching experience, Jane has helped numerous students of various backgrounds and proficiency levels achieve their language learning goals. She is skilled at adapting her teaching methods to suit the needs and learning styles of her students, ensuring that they feel supported and motivated throughout their language journey.</p>
+					<p className={css.teachers_about_me}>{experience}</p>
 				}
 				
 
@@ -76,38 +105,45 @@ const TeacherCard = () => {
 				{
 					isReadMore && 
 					<ul className={css.comment_section}>
-						<li className={css.comment_user}>
-							<div>
-								<Image
-									className={css.comment_image}
-									src="/Frank.jpg"
-									alt="Frank's face"
-									width={44}
-									height={44}
-									loading="eager"
-								/>
-								
-								<div className={css.comment_names}>
-									<p>Frank</p>
-									<p>
-										<svg className={css.icon}>
-											<use href="/icons.svg#icon-star"></use>
-										</svg>
-										4.0
-									</p>
-								</div>
-							</div>
+						{
+							reviews?.map((reviewer, index) => {
+								return (
+									<li className={css.comment_user} key={index}>
+										<div>
+											<Image
+												className={css.comment_image}
+												src="/default_image.jpg"
+												alt={"Default image"}
+												width={44}
+												height={44}
+												loading="eager"
+											/>
+											
+											<div className={css.comment_names}>
+												<p>{reviewer.reviewer_name}</p>
+												<p>
+													<svg className={css.icon}>
+														<use href="/icons.svg#icon-star"></use>
+													</svg>
+													{reviewer.reviewer_rating}
+												</p>
+											</div>
+										</div>
 
-							<p>Jane&apos;s lessons were very helpful. I made good progress.</p>
-						</li>
+										<p>{reviewer.comment}</p>
+									</li>
+								)
+							})
+						}
 					</ul>
 				}
 
 				<ul className={css.teachers_levels}>
-					<li><p>#A1 Beginner</p></li>
-					<li><p>#A2 Elementary</p></li>
-					<li><p>#B1 Intermediate</p></li>
-					<li><p>#B2 Upper-Intermediate</p></li>
+					{
+						levels?.map((level, index) => {
+							return <li key={index}><p>{level}</p></li>
+						})
+					}
 				</ul>
 
 				{

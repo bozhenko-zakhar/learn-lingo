@@ -156,11 +156,18 @@
 
 .comment_section {
 	margin-bottom: 32px;
+	display: flex;
+	flex-direction: column;
+	gap: 32px;
 }
 
 .comment_user > div {
 	display: flex;
 	gap: 12px;
+}
+
+.comment_image {
+	border-radius: 50%;
 }
 
 .comment_names {

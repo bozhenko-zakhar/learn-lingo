@@ -5,6 +5,8 @@ import Header from "@/components/Header/Header";
 import css from "./layout.module.css"
 import ModalViewProvider from "@/components/ModalViewProvider/ModalViewProvider";
 import BodyBackground from "@/hooks/BodyBackground";
+import { AuthProvider } from "@/components/AuthProvider/AuthProvider";
+import TanStackProvider from "@/components/TanStackProvider/TanStackProvider";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -27,11 +29,15 @@ export default function RootLayout({
     <html lang="en">
 			<body className={roboto.variable}>
 				<div className={css.container}>
-					<ModalViewProvider>
-						<Header />
-						<BodyBackground />
-						{children}
-					</ModalViewProvider>
+					<TanStackProvider>
+						<AuthProvider>
+							<ModalViewProvider>
+								<Header />
+								<BodyBackground />
+								{children}
+							</ModalViewProvider>
+						</AuthProvider>
+					</TanStackProvider>
 				</div>
 			</body>
     </html>
