@@ -23,8 +23,8 @@ const LogoutForm = ({ closeMenu }: Props) => {
 			<p>Are you sure you want to logout?</p>
 
 			<div className={css.buttons}>
-				<button onClick={logoutHandler}>{ !isLoading ? "Log out" : "Logging out"}</button>
 				<button onClick={closeMenu}>Cancel</button>
+				<button onClick={logoutHandler}>{ !isLoading ? "Log out" : "Logging out"}</button>
 			</div>
 		</form>
 	)

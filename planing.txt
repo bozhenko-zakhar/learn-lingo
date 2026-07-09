@@ -18,7 +18,7 @@ Components:
 	- ConfirmLogoutContent: firebase authorithation
 	- LoginForm: firebase authorithation
 	- RegistrationForm: firebase authorithation
-	- UnauthorisedContent
+	- UnauthorisedForm
 	- UI Kits:
 			- one button component for every place
 			- selectors should not be created anew, but should be used from react-select multiservese

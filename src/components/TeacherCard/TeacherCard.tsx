@@ -49,17 +49,23 @@ const TeacherCard = ({
 	const queryClient = useQueryClient();
 	
 	async function toggleFavoritesHandler(userId: string, teacherId: string) {
+		if (!currentUser) {
+			context?.setIsOpen(true);
+			context?.setModalForm("unauthorized");
+			return;
+		}
+
 		await toggleFavorites(userId, teacherId);
 
 		await queryClient.invalidateQueries({
-				queryKey: ["favorites", userId],
+			queryKey: ["favorites", userId],
 		});
 	}
 
 	return (
 		<div className={css.card_container}>
 			<svg onClick={async () => {
-				await toggleFavoritesHandler(currentUser!.uid, id);
+				await toggleFavoritesHandler(`${currentUser?.uid}`, id);
 			}} className={css.fav_icon}>
 				<use href={is_favorited ? "/icons.svg#icon-favorite" : "/icons.svg#icon-favorite-uncoloured"}></use>
 			</svg>
@@ -169,22 +175,22 @@ const TeacherCard = ({
 					isReadMore &&
 					<button  onClick={() => {
 						context?.setIsOpen(true);
-							context?.setModalForm("book");
-							context?.setTeacher({
-								id,
-								avatar_url,
-								name,
-								surname,
-								conditions,
-								lessons_done,
-								languages,
-								levels,
-								lesson_info,
-								price_per_hour,
-								rating,
-								experience,
-								reviews
-							})
+						context?.setModalForm("book");
+						context?.setTeacher({
+							id,
+							avatar_url,
+							name,
+							surname,
+							conditions,
+							lessons_done,
+							languages,
+							levels,
+							lesson_info,
+							price_per_hour,
+							rating,
+							experience,
+							reviews
+						})
 					}}>Book trial lesson</button>
 				}
 			</div>
