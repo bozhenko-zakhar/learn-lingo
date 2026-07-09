@@ -3,8 +3,11 @@ import { useState } from "react";
 import css from "./LoginForm.module.css"
 import { login } from "@/firebase/auth";
 
+type Props = {
+	closeMenu: () => void;
+}
 
-const LoginForm = () => {
+const LoginForm = ({ closeMenu }: Props) => {
 	const [isLoading, setLoading] = useState(false);
 
 
@@ -12,15 +15,9 @@ const LoginForm = () => {
 		event.preventDefault();
 
 		setLoading(true);
-		
-		try {
-			const user = await login({ email: "qwerty@gmail.com", password: "qwertyqwerty" });
-			console.log(user);
-		} catch (error) {
-			console.log(error);
-		}
-
+		await login({ email: "qwerty@gmail.com", password: "qwertyqwerty" });
 		setLoading(false);
+		closeMenu();
 	}
 
 	return (

@@ -4,8 +4,11 @@ import css from "./RegistrationForm.module.css"
 import { register } from "@/firebase/auth";
 import { useState } from "react";
 
+type Props = {
+	closeMenu: () => void;
+}
 
-const RegistrationForm = () => {
+const RegistrationForm = ({ closeMenu }: Props) => {
 	const [isLoading, setLoading] = useState(false);
 	const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
@@ -13,6 +16,7 @@ const RegistrationForm = () => {
 		setLoading(true);
 		await register({ name: "qwerty", email: "qwerty@gmail.com", password: "qwertyqwerty" });
 		setLoading(false);
+		closeMenu();
 	}
 	
 	return (

@@ -33,9 +33,14 @@ const Header = () => {
 			</div>
 
 			<div className={css.auth_actions}>
+				{currentUser && <div>
+					<p className={css.displayEmail}>{currentUser.email}</p>
+					<p className={css.displayName}>{currentUser.displayName}</p>
+				</div>}
+
 				<button onClick={() => {
 					context?.setIsOpen(true);
-					context?.setModalForm("login");
+					context?.setModalForm(!currentUser ? "login" : "logout");
 				}} className={css.login_button}>
 					<svg className={css.login_logo}>
 						<use href="/icons.svg#icon-auth"></use>
@@ -75,23 +80,28 @@ const Header = () => {
 							</li>
 						</ul>
 					</nav>
-					
+
+					{currentUser && <div>
+						<p className={css.displayEmail}>{currentUser.email}</p>
+						<p className={css.displayName}>{currentUser.displayName}</p>
+					</div>}
+
 					<button onClick={() => {
 						context?.setIsOpen(true);
-						context?.setModalForm("register");
-					}} className={css.modal_login_button}
-					>
-						Log in
-
-						<svg className={css.modal_login_logo}>
+						context?.setModalForm(!currentUser ? "login" : "logout");
+					}} className={css.login_button}>
+						<svg className={css.login_logo}>
 							<use href="/icons.svg#icon-auth"></use>
 						</svg>
+
+						{ !currentUser ? "Log in" : "Log out"}
 					</button>
 
-					<button onClick={() => {
+					{ !currentUser && <button onClick={() => {
 						context?.setIsOpen(true);
 						context?.setModalForm("register");
-					}} className={css.modal_registration_button}>Registration</button>
+					}} className={css.registration_button}>Registration</button>
+					}
 				</div>
 			</div>
 		</header>

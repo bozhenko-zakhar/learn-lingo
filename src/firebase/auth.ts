@@ -40,6 +40,10 @@ export const register = async ({ name, email, password }: RegisterParams) => {
     password
 	);
 
+	await updateProfile(credential.user, {
+		displayName: name
+	})
+
 	await set(
 		ref(db, `users/${credential.user.uid}`),
 		{

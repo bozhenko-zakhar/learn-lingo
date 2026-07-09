@@ -9,10 +9,11 @@ import BookForm from "../BookForm/BookForm";
 
 import { createContext } from "react";
 import { Teacher } from "@/types/teacher";
+import LogoutForm from "../LogoutForm/LogoutForm";
 
 interface ModalContextValue {
 	setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
-	setModalForm: React.Dispatch<React.SetStateAction<"login" | "register" | "book" | null>>
+	setModalForm: React.Dispatch<React.SetStateAction<"login" | "register" | "book" | "logout" | null>>
 	setTeacher: React.Dispatch<React.SetStateAction<Teacher | null>>
 }
 
@@ -24,7 +25,7 @@ type Props = {
 
 const ModalViewProvider = ({ children }: Props) => {
 	const [isOpen, setIsOpen] = useState<boolean>(false);
-	const [modalForm, setModalForm] = useState<"login" | "register" | "book" | null>(null);
+	const [modalForm, setModalForm] = useState<"login" | "register" | "book" | "logout" | null>(null);
 	const [teacher, setTeacher] = useState<Teacher | null>(null);
 
 	function handleOverlayClick(event: React.MouseEvent<HTMLDivElement>) {
@@ -62,9 +63,10 @@ const ModalViewProvider = ({ children }: Props) => {
 								</svg>
 							</div>
 							{
-								modalForm === "login" ? <LoginForm /> :
-								modalForm === "register" ? <RegistrationForm /> :
+								modalForm === "login" ? <LoginForm closeMenu={() => setIsOpen(false)} /> :
+								modalForm === "register" ? <RegistrationForm closeMenu={() => setIsOpen(false)} /> :
 								modalForm === "book" ? <BookForm teacher={teacher} /> :
+								modalForm === "logout" ? <LogoutForm closeMenu={() => setIsOpen(false)} /> :
 								null
 							}
 						</div>
