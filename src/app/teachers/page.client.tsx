@@ -7,28 +7,65 @@ import css from "./page.client.module.css"
 import { useQuery } from "@tanstack/react-query";
 import { fetchTeachers } from "@/firebase/auth";
 import { Teacher } from "@/firebase/types";
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { Filter } from "@/types/filter";
 
 const TeachersClientPage = () => {
+	const [filters, setFilters] = useState<Filter>({
+		language: null,
+    level: null,
+    price: null,
+	})
+
+	console.log(filters)
+
 	const { data: teachers = [] } = useQuery({
 		queryKey: ["teachers"],
 		queryFn: () => fetchTeachers()
 	});
 
+	console.log(teachers)
+
+	function filterTeachers(teachers: Teacher[], filters: Filter) {
+    return teachers.filter(teacher => {
+			if (filters.language != null && !teacher.languages.includes(filters.language))
+				return false;
+			if (filters.level != null && !teacher.levels.includes(filters.level))
+				return false;
+			if (filters.price != null && teacher.price_per_hour < Number(filters.price))
+				return false;
+			
+			return true;
+    });
+	}
+
+	const filteredTeachers = useMemo(
+    () => filterTeachers(teachers, filters),
+    [teachers, filters]
+	);
+
 	const TEACHERS_PER_PAGE = 4;
 
 	const [page, setPage] = useState(1);
 	const endIndex = page * TEACHERS_PER_PAGE;
-	const visibleTeachers = teachers.slice(0, endIndex);
-	const hasMore = endIndex < teachers.length;
-
+	const visibleTeachers = filteredTeachers.slice(0, endIndex);
+	const hasMore = endIndex < filteredTeachers.length;
 	const handleLoadMore = () => {
 		setPage(prev => prev + 1);
-};
+	};
+
+	useEffect(() => {
+		// тут прибрав, бо цей виклик технічно не має викликати нескінченний ефект 
+		// eslint-disable-next-line react-hooks/set-state-in-effect
+		setPage(1);
+	}, [filters]);
 
 	return (
 		<main className={css.main}>
-			<FilterBlock />
+			<FilterBlock
+				filters={filters}
+				changeFilters={setFilters}
+			/>
 			
 			{
 				visibleTeachers?.map((teacher: Teacher) => {

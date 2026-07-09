@@ -143,7 +143,7 @@ const TeacherCard = ({
 				<ul className={css.teachers_levels}>
 					{
 						levels?.map((level, index) => {
-							return <li key={index}><p>{level}</p></li>
+							return <li key={index}><p>#{level}</p></li>
 						})
 					}
 				</ul>
