@@ -1,36 +1,85 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎓 **LearnLingo — платформа для пошуку репетиторів іноземних мов**
 
-## Getting Started
+## Короткий опис
 
-First, run the development server:
+**LearnLingo** — це веб-застосунок для пошуку та бронювання пробних занять із репетиторами іноземних мов. Користувач може переглядати каталог викладачів, застосовувати фільтри, додавати викладачів до списку обраних, створювати власний акаунт та бронювати пробні уроки.
+
+Проєкт розроблений із використанням **Next.js**, **TypeScript**, **Firebase**, **TanStack Query**, **React Hook Form**, **CSS Modules** та розгорнутий на **Vercel**.
+
+---
+
+## ✨ Основні функції
+
+* перегляд каталогу викладачів;
+* фільтрація за мовою, рівнем підготовки та вартістю уроку;
+* пагінація списку викладачів (*Load More*);
+* реєстрація, авторизація та вихід із акаунта;
+* додавання й видалення викладачів зі списку обраних;
+* окрема сторінка з обраними викладачами;
+* бронювання пробного уроку через модальне вікно.
+
+---
+
+## 🔐 Authentication
+
+Для авторизації використовується **Firebase Authentication**. Користувач може створити акаунт, увійти до системи та вийти з неї. Дані про поточного користувача зберігаються в глобальному контексті застосунку.
+
+---
+
+## 🗄️ Database
+
+Проєкт використовує **Firebase Realtime Database** для зберігання:
+
+* інформації про викладачів;
+* профілів користувачів;
+* списку обраних викладачів для кожного користувача.
+
+Для роботи з серверним станом використовується **TanStack Query** з автоматичним кешуванням та синхронізацією даних.
+
+---
+
+## 🛠️ Технології
+
+* Next.js
+* TypeScript
+* Firebase Authentication
+* Firebase Realtime Database
+* TanStack Query
+* React Hook Form
+* React Select
+* CSS Modules
+* Vercel
+
+---
+
+## 🚀 Встановлення та запуск
+
+### Встановлення залежностей
+
+```bash
+npm install
+```
+
+### Запуск проєкту
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📖 Використання
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Зареєструватися або увійти до акаунта.
+2. Перейти до каталогу викладачів.
+3. Скористатися системою фільтрації.
+4. Додати викладачів до списку обраних.
+5. Переглянути сторінку **Favorites**.
+6. Забронювати пробний урок.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 👤 Автор
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Захар Боженко**
+20 років • FullStack Developer
