@@ -7,6 +7,7 @@ import { ModalContext } from "../ModalViewProvider/ModalViewProvider";
 import { Reviewer } from "@/firebase/types";
 
 type Props = {
+	id: string;
 	avatar_url: string;
 	name: string;
 	surname: string;
@@ -22,6 +23,7 @@ type Props = {
 }
 
 const TeacherCard = ({
+	id,
 	avatar_url,
 	name,
 	surname,
@@ -150,7 +152,22 @@ const TeacherCard = ({
 					isReadMore &&
 					<button  onClick={() => {
 						context?.setIsOpen(true);
-						context?.setModalForm("book");
+							context?.setModalForm("book");
+							context?.setTeacher({
+								id,
+								avatar_url,
+								name,
+								surname,
+								conditions,
+								lessons_done,
+								languages,
+								levels,
+								lesson_info,
+								price_per_hour,
+								rating,
+								experience,
+								reviews
+							})
 					}}>Book trial lesson</button>
 				}
 			</div>

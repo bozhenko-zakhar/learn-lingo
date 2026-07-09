@@ -22,7 +22,11 @@ export const fetchTeachers = async (): Promise<Teacher[]> => {
 		return [];
   }
 
-  return snapshot.val();
+	return Object.entries(snapshot.val()).map(([id, teacher]) => ({
+		...(teacher as Teacher),
+		id,
+	}));
+
 }
 
 export const login = async ({ email, password }: LoginParams) => {

@@ -1,10 +1,13 @@
 "use client"
 import Image from "next/image";
 import css from "./BookForm.module.css"
+import { Teacher } from "@/firebase/types";
 
+type Props = {
+	teacher: Teacher | null;
+}
 
-
-const BookForm = () => {
+const BookForm = ({ teacher }: Props) => {
 	return (
 		<form className={css.form}>
 			<h2>Book trial lesson</h2>
@@ -13,8 +16,8 @@ const BookForm = () => {
 			<div className={css.teachers_info}>
 				<Image
 					className={css.teachers_image}
-					src="/mac-smiling.jpg"
-					alt="Smiling girl hiding behind laptop"
+					src={teacher?.avatar_url || "/default_image.jpg"}
+					alt={`${teacher?.name} ${teacher?.surname}'s face`}
 					width={33}
 					height={33}
 					loading="eager"
@@ -22,7 +25,7 @@ const BookForm = () => {
 
 				<div className={css.teachers_names}>
 					<p>Your teacher</p>
-					<h4>Jane Smith</h4>
+					<h4>{`${teacher?.name} ${teacher?.surname}` || null}</h4>
 				</div>
 			</div>
 

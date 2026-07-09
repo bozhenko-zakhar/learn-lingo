@@ -8,10 +8,12 @@ import RegistrationForm from "../RegistrationForm/RegistrationForm";
 import BookForm from "../BookForm/BookForm";
 
 import { createContext } from "react";
+import { Teacher } from "@/firebase/types";
 
 interface ModalContextValue {
 	setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
 	setModalForm: React.Dispatch<React.SetStateAction<"login" | "register" | "book" | null>>
+	setTeacher: React.Dispatch<React.SetStateAction<Teacher | null>>
 }
 
 export const ModalContext = createContext<ModalContextValue | null>(null);
@@ -23,6 +25,7 @@ type Props = {
 const ModalViewProvider = ({ children }: Props) => {
 	const [isOpen, setIsOpen] = useState<boolean>(false);
 	const [modalForm, setModalForm] = useState<"login" | "register" | "book" | null>(null);
+	const [teacher, setTeacher] = useState<Teacher | null>(null);
 
 	function handleOverlayClick(event: React.MouseEvent<HTMLDivElement>) {
 		if (event.target === event.currentTarget) {
@@ -47,7 +50,7 @@ const ModalViewProvider = ({ children }: Props) => {
 	}, []);
 	
 	return (
-		<ModalContext value={{setIsOpen, setModalForm}}>
+		<ModalContext value={{setIsOpen, setModalForm, setTeacher}}>
 			{children}
 			{ isOpen &&
 				createPortal(
@@ -61,7 +64,7 @@ const ModalViewProvider = ({ children }: Props) => {
 							{
 								modalForm === "login" ? <LoginForm /> :
 								modalForm === "register" ? <RegistrationForm /> :
-								modalForm === "book" ? <BookForm /> :
+								modalForm === "book" ? <BookForm teacher={teacher} /> :
 								null
 							}
 						</div>

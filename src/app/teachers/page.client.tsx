@@ -7,22 +7,35 @@ import css from "./page.client.module.css"
 import { useQuery } from "@tanstack/react-query";
 import { fetchTeachers } from "@/firebase/auth";
 import { Teacher } from "@/firebase/types";
+import { useState } from "react";
 
 const TeachersClientPage = () => {
-	const { data } = useQuery({
+	const { data: teachers = [] } = useQuery({
 		queryKey: ["teachers"],
 		queryFn: () => fetchTeachers()
 	});
+
+	const TEACHERS_PER_PAGE = 4;
+
+	const [page, setPage] = useState(1);
+	const endIndex = page * TEACHERS_PER_PAGE;
+	const visibleTeachers = teachers.slice(0, endIndex);
+	const hasMore = endIndex < teachers.length;
+
+	const handleLoadMore = () => {
+		setPage(prev => prev + 1);
+};
 
 	return (
 		<main className={css.main}>
 			<FilterBlock />
 			
 			{
-				data?.map((teacher: Teacher, index: number) => {
+				visibleTeachers?.map((teacher: Teacher) => {
 					return (
 						<TeacherCard
-							key={index}
+							key={teacher.id}
+							id={teacher.id}
 							avatar_url={teacher.avatar_url}
 							name={teacher.name}
 							surname={teacher.surname}
@@ -39,6 +52,12 @@ const TeachersClientPage = () => {
 					)
 				})
 			}
+
+			{hasMore && (
+				<button className={css.lead_more} onClick={handleLoadMore}>
+					Load more
+				</button>
+			)}
 		</main>
 	);
 };

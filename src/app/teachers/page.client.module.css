@@ -5,3 +5,28 @@
 
 	padding-bottom: 32px;
 }
+
+.lead_more {
+	margin-top: 32px;
+
+	background: #f4c550;
+	border-radius: 12px;
+	width: 100%;
+	height: 60px;
+
+	font-weight: 700;
+	font-size: 18px;
+	line-height: 1.55556;
+	color: #121417;
+}
+
+.lead_more:hover {
+	background: #ffdc86;
+}
+
+@media (min-width: 1440px) {
+	.lead_more {
+		width: 183px;
+		margin-inline: auto;
+	}
+}
