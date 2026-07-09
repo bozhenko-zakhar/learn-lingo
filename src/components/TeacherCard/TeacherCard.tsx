@@ -4,7 +4,7 @@ import Image from "next/image";
 import css from "./TeacherCard.module.css";
 import { use, useState } from "react";
 import { ModalContext } from "../ModalViewProvider/ModalViewProvider";
-import { Reviewer } from "@/firebase/types";
+import { Reviewer } from "@/types/teacher"
 
 type Props = {
 	id: string;

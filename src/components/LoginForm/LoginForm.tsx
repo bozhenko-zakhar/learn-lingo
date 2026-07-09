@@ -1,10 +1,30 @@
 "use client"
+import { useState } from "react";
 import css from "./LoginForm.module.css"
+import { login } from "@/firebase/auth";
 
 
 const LoginForm = () => {
+	const [isLoading, setLoading] = useState(false);
+
+
+	const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+		event.preventDefault();
+
+		setLoading(true);
+		
+		try {
+			const user = await login({ email: "qwerty@gmail.com", password: "qwertyqwerty" });
+			console.log(user);
+		} catch (error) {
+			console.log(error);
+		}
+
+		setLoading(false);
+	}
+
 	return (
-		<form className={css.form}>
+		<form onSubmit={onSubmit} className={css.form}>
 			<h2>Log In</h2>
 			<p>Welcome back! Please enter your credentials to access your account and continue your search for an teacher.</p>
 				
@@ -18,7 +38,7 @@ const LoginForm = () => {
 				</div>
 			</div>
 
-			<button className={css.button}>Log In</button>
+			<button className={css.button}>{ !isLoading ? "Log In" : "Signing in..." }</button>
 		</form>
 	)
 };

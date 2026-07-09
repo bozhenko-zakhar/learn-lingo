@@ -5,11 +5,13 @@ import css from "./Header.module.css"
 import { use, useState } from "react";
 import clsx from "clsx";
 import { ModalContext } from "../ModalViewProvider/ModalViewProvider";
+import { useAuth } from "../AuthProvider/AuthProvider";
 
 
 const Header = () => {
 	const [isOpened, setOpen] = useState(false);
 	const context = use(ModalContext);
+	const { currentUser } = useAuth();
 
 	return (
 		<header className={css.header}>
@@ -39,13 +41,14 @@ const Header = () => {
 						<use href="/icons.svg#icon-auth"></use>
 					</svg>
 
-					Log in
+					{ !currentUser ? "Log in" : "Log out"}
 				</button>
 
-				<button onClick={() => {
+				{ !currentUser && <button onClick={() => {
 					context?.setIsOpen(true);
 					context?.setModalForm("register");
 				}} className={css.registration_button}>Registration</button>
+				}
 			</div>
 
 			<button onClick={() => setOpen(!isOpened)} className={clsx(css.burger_menu, isOpened && css.active)}>

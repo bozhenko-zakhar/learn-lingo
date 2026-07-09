@@ -1,7 +1,7 @@
 "use client"
 import Image from "next/image";
 import css from "./BookForm.module.css"
-import { Teacher } from "@/firebase/types";
+import { Teacher } from "@/types/teacher"
 
 type Props = {
 	teacher: Teacher | null;

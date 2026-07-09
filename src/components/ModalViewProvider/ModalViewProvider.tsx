@@ -8,7 +8,7 @@ import RegistrationForm from "../RegistrationForm/RegistrationForm";
 import BookForm from "../BookForm/BookForm";
 
 import { createContext } from "react";
-import { Teacher } from "@/firebase/types";
+import { Teacher } from "@/types/teacher";
 
 interface ModalContextValue {
 	setIsOpen: React.Dispatch<React.SetStateAction<boolean>>

@@ -6,7 +6,7 @@ import TeacherCard from "@/components/TeacherCard/TeacherCard";
 import css from "./page.client.module.css"
 import { useQuery } from "@tanstack/react-query";
 import { fetchTeachers } from "@/firebase/auth";
-import { Teacher } from "@/firebase/types";
+import { Teacher } from "@/types/teacher";
 import { useEffect, useMemo, useState } from "react";
 import { Filter } from "@/types/filter";
 
