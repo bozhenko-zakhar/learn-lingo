@@ -5,16 +5,14 @@ import TeacherCard from "@/components/TeacherCard/TeacherCard";
 
 import css from "./page.client.module.css"
 import { useQuery } from "@tanstack/react-query";
-import { fetchFavorites, fetchTeachers } from "@/firebase/auth";
+import { fetchTeachers } from "@/firebase/auth";
 import { Teacher } from "@/types/teacher";
 import { useEffect, useMemo, useState } from "react";
 import { Filter } from "@/types/filter";
-import { useAuth } from "@/components/AuthProvider/AuthProvider";
 import { filterTeachers } from "@/utils/filterTeachers";
+import { useFavorites } from "@/hooks/useFavorites";
 
 const FavoritesClientPage = () => {
-	const { currentUser } = useAuth();
-
 	const [filters, setFilters] = useState<Filter>({
 		language: null,
 		level: null,
@@ -25,18 +23,21 @@ const FavoritesClientPage = () => {
 		queryKey: ["teachers"],
 		queryFn: () => fetchTeachers()
 	});
+	
+	const { data: favorites = [] } = useFavorites();
 
-	const { data: favoriteIds = [] } = useQuery({
-    queryKey: ["favorites", currentUser?.uid],
-    queryFn: () => fetchFavorites(`${currentUser?.uid}`),
-	});
+	const favoriteIds = useMemo(() => {
+		return new Set(favorites)
+	},
+		[favorites]
+	);
 
 	const filteredFavoriteTeachers = useMemo(() => {
-		const favorites = teachers.filter((teacher) =>
-			favoriteIds.some(id => id === teacher.id)
+		const favoriteTeachers = teachers.filter((teacher) =>
+			favoriteIds.has(teacher.id)
 		);
 
-		return filterTeachers(favorites, filters);
+		return filterTeachers(favoriteTeachers, filters);
 	}, [teachers, favoriteIds, filters]);
 
 	const TEACHERS_PER_PAGE = 4;
@@ -68,6 +69,7 @@ const FavoritesClientPage = () => {
 						<TeacherCard
 							key={teacher.id}
 							id={teacher.id}
+							is_favorited={favoriteIds.has(teacher.id)}
 							avatar_url={teacher.avatar_url}
 							name={teacher.name}
 							surname={teacher.surname}

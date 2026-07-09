@@ -4,12 +4,14 @@ import Image from "next/image";
 import css from "./TeacherCard.module.css";
 import { use, useState } from "react";
 import { ModalContext } from "../ModalViewProvider/ModalViewProvider";
-import { Reviewer, Teacher } from "@/types/teacher"
+import { Reviewer } from "@/types/teacher"
 import { useAuth } from "../AuthProvider/AuthProvider";
-import { fetchFavorites, toggleFavorites } from "@/firebase/auth";
+import { toggleFavorites } from "@/firebase/auth";
+import { useQueryClient } from "@tanstack/react-query";
 
 type Props = {
 	id: string;
+	is_favorited: boolean;
 	avatar_url: string;
 	name: string;
 	surname: string;
@@ -26,6 +28,7 @@ type Props = {
 
 const TeacherCard = ({
 	id,
+	is_favorited,
 	avatar_url,
 	name,
 	surname,
@@ -40,21 +43,25 @@ const TeacherCard = ({
 	reviews
 }: Props) => {
 	const [isReadMore, setReadMore] = useState(false);
-	const [isColoured, setColoured] = useState(false);
 	const context = use(ModalContext);
 	const { currentUser } = useAuth();
+
+	const queryClient = useQueryClient();
 	
-	function toggleFavoritesHandler(userId: string, teacherId: string) {
-		toggleFavorites(userId, teacherId)
+	async function toggleFavoritesHandler(userId: string, teacherId: string) {
+		await toggleFavorites(userId, teacherId);
+
+		await queryClient.invalidateQueries({
+				queryKey: ["favorites", userId],
+		});
 	}
 
 	return (
 		<div className={css.card_container}>
 			<svg onClick={async () => {
-				toggleFavoritesHandler(`${currentUser?.uid}`, id);
-				setColoured(!isColoured);
+				await toggleFavoritesHandler(currentUser!.uid, id);
 			}} className={css.fav_icon}>
-				<use href={isColoured ? "/icons.svg#icon-favorite" : "/icons.svg#icon-favorite-uncoloured"}></use>
+				<use href={is_favorited ? "/icons.svg#icon-favorite" : "/icons.svg#icon-favorite-uncoloured"}></use>
 			</svg>
 
 			<div className={css.image_container}>

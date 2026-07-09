@@ -10,6 +10,7 @@ import { Teacher } from "@/types/teacher";
 import { useEffect, useMemo, useState } from "react";
 import { Filter } from "@/types/filter";
 import { filterTeachers } from "@/utils/filterTeachers";
+import { useFavorites } from "@/hooks/useFavorites";
 
 const TeachersClientPage = () => {
 	const [filters, setFilters] = useState<Filter>({
@@ -22,6 +23,14 @@ const TeachersClientPage = () => {
 		queryKey: ["teachers"],
 		queryFn: () => fetchTeachers()
 	});
+
+	const { data: favorites = [] } = useFavorites();
+
+	const favoriteIds = useMemo(() => {
+		return new Set(favorites)
+	},
+		[favorites]
+	);
 
 	const filteredTeachers = useMemo(() => {
 		return filterTeachers(teachers, filters)
@@ -58,6 +67,7 @@ const TeachersClientPage = () => {
 						<TeacherCard
 							key={teacher.id}
 							id={teacher.id}
+							is_favorited={favoriteIds.has(teacher.id)}
 							avatar_url={teacher.avatar_url}
 							name={teacher.name}
 							surname={teacher.surname}
