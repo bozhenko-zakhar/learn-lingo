@@ -1,5 +1,6 @@
 import Image from "next/image";
 import css from "./page.module.css";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -8,7 +9,7 @@ export default function Home() {
 				<div className={css.welcome_content}>
 					<h1>Unlock your potential with the best <span className={css.marked_text}><span>language</span></span> tutors</h1>
 					<p>Embark on an Exciting Language Journey with Expert Language Tutors: Elevate your language proficiency to new heights by connecting with highly qualified and experienced tutors.</p>
-					<button>Get started</button>
+					<Link className={css.start} href="/teachers">Get started</Link>
 				</div>
 				<div className={css.welcome_image_container}>
 					<Image
