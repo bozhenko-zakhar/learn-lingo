@@ -5,13 +5,16 @@ import TeacherCard from "@/components/TeacherCard/TeacherCard";
 
 import css from "./page.client.module.css"
 import { useQuery } from "@tanstack/react-query";
-import { fetchTeachers } from "@/firebase/auth";
+import { fetchFavorites, fetchTeachers } from "@/firebase/auth";
 import { Teacher } from "@/types/teacher";
 import { useEffect, useMemo, useState } from "react";
 import { Filter } from "@/types/filter";
+import { useAuth } from "@/components/AuthProvider/AuthProvider";
 import { filterTeachers } from "@/utils/filterTeachers";
 
-const TeachersClientPage = () => {
+const FavoritesClientPage = () => {
+	const { currentUser } = useAuth();
+
 	const [filters, setFilters] = useState<Filter>({
 		language: null,
 		level: null,
@@ -23,18 +26,25 @@ const TeachersClientPage = () => {
 		queryFn: () => fetchTeachers()
 	});
 
-	const filteredTeachers = useMemo(() => {
-		return filterTeachers(teachers, filters)
-	},
-  [teachers, filters]
-);
+	const { data: favoriteIds = [] } = useQuery({
+    queryKey: ["favorites", currentUser?.uid],
+    queryFn: () => fetchFavorites(`${currentUser?.uid}`),
+	});
+
+	const filteredFavoriteTeachers = useMemo(() => {
+		const favorites = teachers.filter((teacher) =>
+			favoriteIds.some(id => id === teacher.id)
+		);
+
+		return filterTeachers(favorites, filters);
+	}, [teachers, favoriteIds, filters]);
 
 	const TEACHERS_PER_PAGE = 4;
 
 	const [page, setPage] = useState(1);
 	const endIndex = page * TEACHERS_PER_PAGE;
-	const visibleTeachers = filteredTeachers.slice(0, endIndex);
-	const hasMore = endIndex < filteredTeachers.length;
+	const visibleTeachers = filteredFavoriteTeachers.slice(0, endIndex);
+	const hasMore = endIndex < filteredFavoriteTeachers.length;
 	const handleLoadMore = () => {
 		setPage(prev => prev + 1);
 	};
@@ -84,4 +94,4 @@ const TeachersClientPage = () => {
 	);
 };
 
-export default TeachersClientPage;
+export default FavoritesClientPage;

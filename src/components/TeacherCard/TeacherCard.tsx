@@ -4,7 +4,9 @@ import Image from "next/image";
 import css from "./TeacherCard.module.css";
 import { use, useState } from "react";
 import { ModalContext } from "../ModalViewProvider/ModalViewProvider";
-import { Reviewer } from "@/types/teacher"
+import { Reviewer, Teacher } from "@/types/teacher"
+import { useAuth } from "../AuthProvider/AuthProvider";
+import { fetchFavorites, toggleFavorites } from "@/firebase/auth";
 
 type Props = {
 	id: string;
@@ -38,12 +40,20 @@ const TeacherCard = ({
 	reviews
 }: Props) => {
 	const [isReadMore, setReadMore] = useState(false);
-	const [isColoured, setColoured] = useState(false)
+	const [isColoured, setColoured] = useState(false);
 	const context = use(ModalContext);
+	const { currentUser } = useAuth();
+	
+	function toggleFavoritesHandler(userId: string, teacherId: string) {
+		toggleFavorites(userId, teacherId)
+	}
 
 	return (
 		<div className={css.card_container}>
-			<svg onClick={() => setColoured(!isColoured)} className={css.fav_icon}>
+			<svg onClick={async () => {
+				toggleFavoritesHandler(`${currentUser?.uid}`, id);
+				setColoured(!isColoured);
+			}} className={css.fav_icon}>
 				<use href={isColoured ? "/icons.svg#icon-favorite" : "/icons.svg#icon-favorite-uncoloured"}></use>
 			</svg>
 

@@ -1,4 +1,4 @@
-import { get, ref, set } from "firebase/database";
+import { get, ref, remove, set } from "firebase/database";
 import { auth, db } from "./firebase";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
 import { Teacher } from "@/types/teacher";
@@ -26,7 +26,6 @@ export const fetchTeachers = async (): Promise<Teacher[]> => {
 		...(teacher as Teacher),
 		id,
 	}));
-
 }
 
 export const login = async ({ email, password }: LoginParams) => {
@@ -42,7 +41,7 @@ export const register = async ({ name, email, password }: RegisterParams) => {
 
 	await updateProfile(credential.user, {
 		displayName: name
-	})
+	});
 
 	await set(
 		ref(db, `users/${credential.user.uid}`),
@@ -58,3 +57,26 @@ export const register = async ({ name, email, password }: RegisterParams) => {
 export const logout = async () => {
 	return await signOut(auth);
 }
+
+export const fetchFavorites = async (userId: string) => {
+	const favoritesReference = ref(db, `users/${userId}/favorites`);
+	const snapshot = await get(favoritesReference);
+
+	if (!snapshot.exists()) {
+		return [];
+	}
+
+	return Object.keys(snapshot.val());
+}
+
+export const toggleFavorites = async (userId: string, teacherId: string) => {
+  const favoriteRef = ref(db, `users/${userId}/favorites/${teacherId}`);
+
+  const snapshot = await get(favoriteRef);
+
+  if (snapshot.exists()) {
+    await remove(favoriteRef);
+  } else {
+    await set(favoriteRef, true);
+  }
+};

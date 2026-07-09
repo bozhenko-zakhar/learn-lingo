@@ -28,6 +28,7 @@ const Header = () => {
 					<ul className={css.nav_list}>
 						<li className={css.nav_item}><Link href="/">Home</Link></li>
 						<li className={css.nav_item}><Link href="/teachers">Teachers</Link></li>
+						{ currentUser && <li className={css.nav_item}><Link href="/favorites">Favorites</Link></li> }
 					</ul>
 				</nav>
 			</div>
@@ -77,6 +78,12 @@ const Header = () => {
 								className={css.modal_nav_item}
 							>
 								<Link href="/teachers">Teachers</Link>
+							</li>
+							<li
+								onClick={() => setOpen(!isOpened)}
+								className={css.modal_nav_item}
+							>
+								<Link href="/favorites">Favorites</Link>
 							</li>
 						</ul>
 					</nav>
