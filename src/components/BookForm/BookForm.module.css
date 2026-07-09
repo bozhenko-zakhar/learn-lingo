@@ -47,6 +47,10 @@
 	color: #121417;
 }
 
+.errors {
+	color: #E0A39A;
+}
+
 .fieldset {
 	margin-bottom: 40px;
 }

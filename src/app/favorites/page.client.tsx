@@ -11,13 +11,12 @@ import { useEffect, useMemo, useState } from "react";
 import { Filter } from "@/types/filter";
 import { filterTeachers } from "@/utils/filterTeachers";
 import { useFavorites } from "@/hooks/useFavorites";
+import { useAuth } from "@/components/AuthProvider/AuthProvider";
+import { useRouter } from "next/navigation";
 
 const FavoritesClientPage = () => {
-	const [filters, setFilters] = useState<Filter>({
-		language: null,
-		level: null,
-		price: null,
-	});
+	const { currentUser } = useAuth();
+	const router = useRouter();
 
 	const { data: teachers = [] } = useQuery({
 		queryKey: ["teachers"],
@@ -25,6 +24,12 @@ const FavoritesClientPage = () => {
 	});
 	
 	const { data: favorites = [] } = useFavorites();
+	
+	const [filters, setFilters] = useState<Filter>({
+		language: null,
+		level: null,
+		price: null,
+	});
 
 	const favoriteIds = useMemo(() => {
 		return new Set(favorites)
@@ -49,6 +54,10 @@ const FavoritesClientPage = () => {
 	const handleLoadMore = () => {
 		setPage(prev => prev + 1);
 	};
+
+	useEffect(() => {
+		if (!currentUser) router.push("/")
+	})
 
 	useEffect(() => {
 		// тут прибрав, бо цей виклик технічно не має викликати нескінченний ефект 

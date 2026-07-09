@@ -28,11 +28,11 @@ export const fetchTeachers = async (): Promise<Teacher[]> => {
 	}));
 }
 
-export const login = async ({ email, password }: LoginParams) => {
+export const loginUser = async ({ email, password }: LoginParams) => {
 	return await signInWithEmailAndPassword(auth, email, password);
 };
 
-export const register = async ({ name, email, password }: RegisterParams) => {
+export const registerUser = async ({ name, email, password }: RegisterParams) => {
 	const credential = await createUserWithEmailAndPassword(
     auth,
     email,

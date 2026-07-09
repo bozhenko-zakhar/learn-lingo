@@ -7,6 +7,7 @@ import ModalViewProvider from "@/components/ModalViewProvider/ModalViewProvider"
 import BodyBackground from "@/hooks/BodyBackground";
 import { AuthProvider } from "@/components/AuthProvider/AuthProvider";
 import TanStackProvider from "@/components/TanStackProvider/TanStackProvider";
+import { Toaster } from "react-hot-toast";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -39,6 +40,16 @@ export default function RootLayout({
 						</AuthProvider>
 					</TanStackProvider>
 				</div>
+
+				<Toaster
+          position="top-right"
+          toastOptions={{
+            duration: 6000,
+            style: {
+							fontSize: "18px"
+            },
+          }}
+        />
 			</body>
     </html>
   );
