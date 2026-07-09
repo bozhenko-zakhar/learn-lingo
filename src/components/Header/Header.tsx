@@ -79,12 +79,14 @@ const Header = () => {
 							>
 								<Link href="/teachers">Teachers</Link>
 							</li>
+
+							{ currentUser && 
 							<li
 								onClick={() => setOpen(!isOpened)}
 								className={css.modal_nav_item}
 							>
 								<Link href="/favorites">Favorites</Link>
-							</li>
+							</li>}
 						</ul>
 					</nav>
 
